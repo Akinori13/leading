@@ -8,12 +8,21 @@ function App() {
 
   return (
     <div className="App">
-      <header>
-        <h1>Hello, Leading Team...</h1>
+      <header className="flex justify-center">
+        <h1 className="w-9/12 text-3xl text-start p-2 font-bold">
+          LeadingTeam
+        </h1>
       </header>
+
       <body>
-        <h2>{isLoggedIn ? 'You are logged in!' : 'You are not logged in!'}</h2>
-        <LoginForm />
+        {isLoggedIn ? (
+          <div>ログイン完了!</div>
+        ) : (
+          <div className="flex">
+            <div className="w-full" />
+            <LoginForm />
+          </div>
+        )}
       </body>
     </div>
   )
