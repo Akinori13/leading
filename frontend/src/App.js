@@ -1,11 +1,8 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import './App.css'
-import { AuthContext } from './contexts/AuthContext'
-import LoginForm from './components/LoginForm'
+import Tweets from './components/Tweets'
 
 function App() {
-  const { isLoggedIn } = useContext(AuthContext)
-
   return (
     <div className="App">
       <header className="flex justify-center">
@@ -15,14 +12,7 @@ function App() {
       </header>
 
       <body>
-        {isLoggedIn ? (
-          <div>ログイン完了!</div>
-        ) : (
-          <div className="flex">
-            <div className="w-full" />
-            <LoginForm />
-          </div>
-        )}
+        <Tweets />
       </body>
     </div>
   )

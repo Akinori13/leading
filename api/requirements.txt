@@ -5,3 +5,4 @@ dj-rest-auth
 djangorestframework-simplejwt
 django-cors-headers
 psycopg
+boto3

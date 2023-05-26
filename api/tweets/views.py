@@ -1,5 +1,7 @@
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import AllowAny
+
+from accounts.models import User
 
 from .models import Tweet
 from .serializers import TweetSerializer
@@ -8,13 +10,13 @@ from .serializers import TweetSerializer
 class TweetListCreateAPIView(ListCreateAPIView):
     queryset = Tweet.objects.all()
     serializer_class = TweetSerializer
-    permissions = IsAuthenticated
+    permission_classes = (AllowAny,)
 
     def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+        serializer.save(user=User.objects.get(username="admin"))
 
 
 class TweetRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
     queryset = Tweet.objects.all()
     serializer_class = TweetSerializer
-    permissions = IsAuthenticated
+    permission_classes = (AllowAny,)

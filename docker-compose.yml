@@ -1,4 +1,4 @@
-version: '3.9'
+version: "3.9"
 
 services:
   db:
@@ -11,7 +11,7 @@ services:
     env_file:
       - .env
     healthcheck:
-      test: [ 'CMD-SHELL', 'pg_isready -U postgres' ]
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 5s
       timeout: 5s
       retries: 10
@@ -30,12 +30,7 @@ services:
     depends_on:
       db:
         condition: service_healthy
-    command:
-      [
-        'bash',
-        '-c',
-        'python manage.py runserver 0.0.0.0:8000'
-      ]
+    command: ["bash", "-c", "python manage.py runserver 0.0.0.0:8000"]
     ports:
       - 8000:8000
     tty: true
@@ -43,10 +38,10 @@ services:
   localstack:
     container_name: leading_localstack
     image: localstack/localstack:latest
-    volumes:
-      - leading-localstack-data:/var/lib/localstack
-    env_file:
-      - .env
+    environment:
+      SERVICES: sqs
+      DEFAULT_REGION: us-east-1
+      DOCKER_HOST: tcp://docker-compose-localstack:2375
     ports:
       - 4566:4566
 
