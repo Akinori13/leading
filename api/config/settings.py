@@ -23,6 +23,8 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     # Devs
     "accounts.apps.AccountsConfig",
+    "tasks.apps.TasksConfig",
+    "tweets.apps.TweetsConfig",
     # ThirdParty
     "rest_framework",
     "rest_framework.authtoken",
@@ -50,9 +52,7 @@ MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
 ]
 
-CORS_ORIGIN_WHITELIST = [
-    "http://localhost:3000"
-]
+CORS_ORIGIN_WHITELIST = ["http://localhost:3000"]
 
 ROOT_URLCONF = "config.urls"
 
